@@ -29,27 +29,25 @@ public class Nave {
 		
 		misseis = new ArrayList<Missil>();
 		
-		this.x = 100;
-		this.y = 100;
+		this.x = 400;
+		this.y = 600;
 	}
-	
-	
 
 	public void move(){
-		this.x += dx; // 1 462
-		this.y += dy; //  1 340
+		this.x += dx;
+		this.y += dy;
 		if(x < 1 ){
 			x = 1;
 		}
-		if(x > 462 ){
-			x = 462;
+		if(x > 740 ){
+			x = 740;
 		}
 		
 		if(y < 1){
 			y = 1;
 		}
-		if(y > 360){
-			y = 360;
+		if(y > 700){
+			y = 700;
 		}
 	}
 	
@@ -79,7 +77,7 @@ public class Nave {
 	}
 	
 	public void atira(){
-		misseis.add(new Missil(x+largura/2, y + altura));
+		misseis.add(new Missil((x+largura/2)-3, y-7));
 	}
 
 	public Rectangle getBounds(){
@@ -95,21 +93,20 @@ public class Nave {
 		}
 		
 		if(code == KeyEvent.VK_UP){
-			dy = -1;
+			dy = -2;
 		}
 		
 		if(code == KeyEvent.VK_DOWN){
-			dy = 1;
+			dy = 2;
 		}
 		
 		if(code == KeyEvent.VK_LEFT){
-			dx = -1;
+			dx = -2;
 		}
 		
 		if(code == KeyEvent.VK_RIGHT){
-			dx = 1;
-		}
-		
+			dx = 2;
+		}	
 	}
 	
 	public void keyReleased(KeyEvent tecla){
@@ -131,6 +128,4 @@ public class Nave {
 			dx = 0;
 		}
 	}
-	
-	
 }

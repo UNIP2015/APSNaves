@@ -1,15 +1,16 @@
 package jogo;
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class ContainerDeJanelas extends JFrame{
-	public static int LARGURA_TELA = 470;
-	public static int ALTURA_TELA = 300;
+	public static int LARGURA_TELA = 800;
+	public static int ALTURA_TELA = 800;
 	
-	public ContainerDeJanelas(){
+	public ContainerDeJanelas() throws InterruptedException{
 		
 		add(new Fase());
 		
-		setTitle("Meu Primeiro Jogo");
+		setTitle("APS");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(LARGURA_TELA,ALTURA_TELA);
 		setResizable(false);
@@ -17,7 +18,7 @@ public class ContainerDeJanelas extends JFrame{
 		setVisible(true);
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		new ContainerDeJanelas();
 	}
 }

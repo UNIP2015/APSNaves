@@ -12,9 +12,9 @@ public class Missil {
 	
 	private int largura,altura;
 	
-	private static final int LARGURA_TELA = 500;
-	private static final int ALTURA_TELA = 400;
-	private static final int VELOCIDADE = 2;
+	private static final int LARGURA_TELA = 800;
+	private static final int ALTURA_TELA = 800;
+	private static final int VELOCIDADE = 4;
 	
 	public Missil(int x, int y){
 		this.x = x;
@@ -59,6 +59,7 @@ public class Missil {
 		return  new Rectangle(x,y, largura, altura);
 	}
 
-
-	
+	public static int getLarguraTela() {
+		return LARGURA_TELA;
+	}
 }
