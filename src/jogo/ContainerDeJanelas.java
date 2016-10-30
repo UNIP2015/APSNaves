@@ -17,7 +17,5 @@ public class ContainerDeJanelas extends JFrame{
 		setVisible(true);
 	}
 	
-	public static void main(String[] args) {
-		new ContainerDeJanelas();
-	}
+	
 }

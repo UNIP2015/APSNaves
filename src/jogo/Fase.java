@@ -24,6 +24,8 @@ public class Fase extends JPanel implements ActionListener {
 	private Image fundo;
 	private Nave nave;
 	private Timer timer;
+	
+	private int points = 0;
 
 	private boolean emJogo;
 
@@ -106,6 +108,8 @@ public class Fase extends JPanel implements ActionListener {
 			graficos.setColor(Color.WHITE);
 			graficos.drawString("INIMIGOS: " + inimigos.size(), 5, 15);
 			
+			graficos.drawString("PONTOS: " + points, ContainerDeJanelas.LARGURA_TELA - 100, 15);
+			
 		}
 		
 		g.dispose();
@@ -165,6 +169,7 @@ public class Fase extends JPanel implements ActionListener {
 
 				nave.setVisivel(false);
 				tempInimigo.setVisible(false);
+				
 
 				emJogo = false;
 
@@ -188,7 +193,9 @@ public class Fase extends JPanel implements ActionListener {
 
 					tempInimigo.setVisible(false);
 					tempMissel.setVisible(false);
-
+					points++;
+					
+					
 				}
 
 			}
