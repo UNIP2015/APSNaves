@@ -72,6 +72,7 @@ public class Fase extends JPanel implements ActionListener {
 			int y =  ContainerDeJanelas.ALTURA_TELA * i;
 			y = -1 * y;
 		
+			
 			inimigos.add(new Inimigo(x, y ));
 			
 		}
