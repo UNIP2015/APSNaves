@@ -1,7 +1,5 @@
 package jogo;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -15,8 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
+@SuppressWarnings("serial")
 public class ContainerMenu extends FrameGeneric {
 	private JButton btSobre;
 	private JButton btSair;
@@ -42,7 +40,7 @@ public class ContainerMenu extends FrameGeneric {
 		panel.setForeground(Color.BLACK);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
-		lbTitle = new JLabel("Descubra OTÁRIO".toUpperCase());
+		lbTitle = new JLabel("Descubra OTÃ�RIO".toUpperCase());
 		
 		Font f = new Font("Arial", Font.BOLD, 18);
 		lbTitle.setFont(f);;
@@ -51,7 +49,7 @@ public class ContainerMenu extends FrameGeneric {
 		
 		panel.add(lbTitle);
 		
-		//Botões
+		//BotÃµes
 		
 		panelButtons = new JPanel();
 		panelButtons.setBackground(Color.BLACK);
@@ -61,10 +59,10 @@ public class ContainerMenu extends FrameGeneric {
 		
 		int x = (ContainerDeJanelas.LARGURA_TELA / 2 ) - ((int)( sizeBt.getWidth() / 2 ) );
 		int y = 5;
-		//Botão Init Jogo
+		//BotÃ£o Init Jogo
 		btPlay = new JButton("Iniciar Jogo");
 		btPlay.setBackground(Color.BLACK);
-		Border b = BorderFactory.createLineBorder(Color.WHITE, 1);
+		BorderFactory.createLineBorder(Color.WHITE, 1);
 		btPlay.setBorder(BorderFactory.createCompoundBorder(
 	               BorderFactory.createLineBorder(Color.WHITE, 3),
 	               BorderFactory.createLineBorder(Color.BLACK, 20)));
@@ -80,9 +78,9 @@ public class ContainerMenu extends FrameGeneric {
 		panelButtons.add(btPlay);
 		
 		
-		//Botão INSTRUÇÃO
+		//BotÃ£o INSTRUÃ‡ÃƒO
 		
-		btInstrucoes = new JButton("Instruções");
+		btInstrucoes = new JButton("InstruÃ§Ãµes");
 		btInstrucoes.setBackground(Color.BLACK);
 		
 		btInstrucoes.setBorder(BorderFactory.createCompoundBorder(
@@ -98,7 +96,7 @@ public class ContainerMenu extends FrameGeneric {
 		panelButtons.add(btInstrucoes);
 		
 		
-		//Botão Sobre
+		//BotÃ£o Sobre
 		btSobre = new JButton("Sobre");
 		btSobre.setBackground(Color.BLACK);
 		btSobre.setBorder(BorderFactory.createCompoundBorder(
@@ -114,7 +112,7 @@ public class ContainerMenu extends FrameGeneric {
 				
 		panelButtons.add(btSobre);
 		
-		//Botão Sair
+		//BotÃ£o Sair
 		btSair = new JButton("Sair do JOGO");
 		btSair.setBackground(Color.BLACK);
 		btSair.setBorder(BorderFactory.createCompoundBorder(

@@ -24,8 +24,6 @@ public class Fase extends JPanel implements ActionListener {
 	private Nave nave;
 	private Timer timer;
 	
-	private int points = 0;
-
 	private boolean emJogo;
 
 	private List<Inimigo> inimigos;

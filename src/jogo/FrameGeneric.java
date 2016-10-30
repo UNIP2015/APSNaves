@@ -4,6 +4,7 @@ import java.awt.Component;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class FrameGeneric extends JFrame{
 
 
