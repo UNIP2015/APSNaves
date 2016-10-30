@@ -2,6 +2,7 @@ package jogo;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 
@@ -13,23 +14,26 @@ public class Inimigo {
 	
 	private int xOrigin, yOrigin;
 	
-	private static final int LARGURA_TELA = 500;
+	private static final int LARGURA_TELA = 600;
 	private static final int VELOCIDADE = 1;
 	
-	private int contador = 0;
-	
-	public Inimigo(int x, int y){
+	public Inimigo(int x, int y, int i){
 		this.x = x;
 		this.y = y;
 		this.xOrigin = x;
 		this.yOrigin = y;
 		ImageIcon reference;
 		
-		if(contador++ % 3 == 0){
-			reference = new ImageIcon("res/inimigo_1.gif");			
-		}else {
-			reference = new ImageIcon("res/inimigo_2.gif");
+		if(i % 3 == 0){
+			reference = new ImageIcon("res/lixo1.png");			
 		}
+		else if(i % 5 == 0){
+			reference = new ImageIcon("res/lixo3.png");
+		}
+		else {
+			reference = new ImageIcon("res/lixo2.png");
+		}
+		
 		imagem = reference.getImage();
 		isVisible = true;
 		
@@ -45,11 +49,12 @@ public class Inimigo {
 	
 	public void move(){
 		if(y > ContainerDeJanelas.ALTURA_TELA){
+			Random r = new Random();
 			y = this.yOrigin;
+			x = r.nextInt(ContainerDeJanelas.LARGURA_TELA);
 		}else {
 			y += VELOCIDADE;
 		}
-		System.out.println("Moving X: " + x + " Y: " + y);
 	}
 	
 	public boolean isVisible() {
@@ -63,9 +68,17 @@ public class Inimigo {
 	public int getX() {
 		return x;
 	}
+	
+	public int setX(int x){
+		return this.x = x;
+	}
 
 	public int getY() {
 		return y;
+	}
+	
+	public int setY(int y){
+		return this.y = y;
 	}
 
 	public Image getImagem() {
@@ -74,6 +87,10 @@ public class Inimigo {
 	
 	public Rectangle getBounds(){
 		return  new Rectangle(x,y, largura, altura);
+	}
+
+	public static int getLarguraTela() {
+		return LARGURA_TELA;
 	}
 
 	

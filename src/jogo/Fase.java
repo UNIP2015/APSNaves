@@ -17,8 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
-
+@SuppressWarnings("serial")
 public class Fase extends JPanel implements ActionListener {
 
 	private Image fundo;
@@ -31,18 +30,7 @@ public class Fase extends JPanel implements ActionListener {
 
 	private List<Inimigo> inimigos;
 
-	private int[][] coordenadas = { { 29, 2380 }, { 59, 2600 }, { 89, 1380},
-			{ 109, 780}, { 139, 580}, { 239, 880}, { 259,790},
-			{ 50,760}, { 790, 150 }, { 1980, 209 }, { 45,560}, { 70, 510},
-			{ 159,930}, { 80,590}, { 50,530}, { 940, 59 }, { 30,990},
-			{ 200,920}, { 259,900}, { 50, 660 }, { 540,90}, { 220,810},
-			{ 20,860 }, { 180,740}, { 128, 820}, { 490,170}, { 30,700},
-			{ 300,920}, { 328,856}, { 320, 456} };
-
 	public Fase() {
-		
-		
-
 		setFocusable(true);
 		setDoubleBuffered(true);
 		addKeyListener(new TecladoAdapter());
@@ -57,28 +45,32 @@ public class Fase extends JPanel implements ActionListener {
 
 		timer = new Timer(5, this);
 		timer.start();
-
 	}
 
 	public void inicializaInimigos() {
+		
+		 inimigos = new ArrayList<Inimigo>();
 
-		inimigos = new ArrayList<Inimigo>();
-		
-		
-		Random r = new  Random();
-		for(int i = 0; i < coordenadas.length; i++){
-			int x = r.nextInt(ContainerDeJanelas.LARGURA_TELA);
-			
-			int y =  ContainerDeJanelas.ALTURA_TELA * i;
-			y = -1 * y;
-		
-			
-			inimigos.add(new Inimigo(x, y ));
-			
-		}
-		
+	        Random r = new  Random();
+	        for(int i = 0; i < 10; i++){
 
+	            int x = r.nextInt((ContainerDeJanelas.LARGURA_TELA - 40));
+	            int y = 0;
 
+	            if(x >= 0){
+	                y = (ContainerDeJanelas.ALTURA_TELA + r.nextInt(x)) * -1;
+	            }
+	            else
+	            {
+	                y = (ContainerDeJanelas.ALTURA_TELA + r.nextInt((x * -1))) * -1;
+	            }
+
+	            inimigos.add(new Inimigo(x, y, i));
+
+	            if(i % 9 == 0){
+
+	            }
+	        }
 	}
 
 	public void paint(Graphics g) {
@@ -87,34 +79,21 @@ public class Fase extends JPanel implements ActionListener {
 		graficos.drawImage(fundo, 0, 0, null);
 
 		if (emJogo) {
-
 			graficos.drawImage(nave.getImagem(), nave.getX(), nave.getY(), this);
-
 			List<Missil> misseis = nave.getMisseis();
-
 			for (int i = 0; i < misseis.size(); i++) {
-
 				Missil m = (Missil) misseis.get(i);
 				graficos.drawImage(m.getImagem(), m.getX(), m.getY(), this);
-
 			}
-
 			for (int i = 0; i < inimigos.size(); i++) {
-
 				Inimigo in = inimigos.get(i);
 				graficos.drawImage(in.getImagem(), in.getX(), in.getY(), this);
-
 			}
 
-			graficos.setColor(Color.WHITE);
-			graficos.drawString("INIMIGOS: " + inimigos.size(), 5, 15);
-			
-			graficos.drawString("PONTOS: " + points, ContainerDeJanelas.LARGURA_TELA - 100, 15);
-			
-		}
-		
-		g.dispose();
+			graficos.setColor(Color.BLACK);
 
+		}
+		g.dispose();
 	}
 
 	@Override
@@ -135,7 +114,6 @@ public class Fase extends JPanel implements ActionListener {
 			} else {
 				misseis.remove(i);
 			}
-
 		}
 
 		for (int i = 0; i < inimigos.size(); i++) {
@@ -147,9 +125,7 @@ public class Fase extends JPanel implements ActionListener {
 			} else {
 				inimigos.remove(i);
 			}
-
 		}
-
 		nave.move();
 		checarColisoes();
 		repaint();
@@ -173,9 +149,7 @@ public class Fase extends JPanel implements ActionListener {
 				
 
 				emJogo = false;
-
 			}
-
 		}
 
 		List<Missil> misseis = nave.getMisseis();
@@ -192,17 +166,12 @@ public class Fase extends JPanel implements ActionListener {
 
 				if (formaMissel.intersects(formaInimigo)) {
 
-					tempInimigo.setVisible(false);
+					tempInimigo.setY((100 + ContainerDeJanelas.ALTURA_TELA * -1));
 					tempMissel.setVisible(false);
-					points++;
-					
-					
+
 				}
-
 			}
-
 		}
-
 	}
 
 	private class TecladoAdapter extends KeyAdapter {
@@ -214,16 +183,13 @@ public class Fase extends JPanel implements ActionListener {
 				emJogo = true;
 				nave = new Nave();
 				inicializaInimigos();
-			}
-			
+			}			
 			nave.keyPressed(e);
 		}
-
+		
 		@Override
 		public void keyReleased(KeyEvent e) {
 			nave.keyReleased(e);
 		}
-
 	}
-
 }

@@ -145,8 +145,13 @@ public class ContainerMenu extends FrameGeneric {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				self.dispose();
-				new ContainerDeJanelas();
+				try{
+					self.dispose();
+					new ContainerDeJanelas();
+				}catch(Exception er){
+					//handled exception
+				}
+				
 				
 			}
 		});
