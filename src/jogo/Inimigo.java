@@ -25,10 +25,10 @@ public class Inimigo {
 		ImageIcon reference;
 		
 		if(i % 3 == 0){
-			reference = new ImageIcon("res/lixo1.png");			
+			reference = new ImageIcon("res/lixo3.png");			
 		}
 		else if(i % 5 == 0){
-			reference = new ImageIcon("res/lixo3.png");
+			reference = new ImageIcon("res/lixo1.png");
 		}
 		else {
 			reference = new ImageIcon("res/lixo2.png");

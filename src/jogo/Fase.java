@@ -54,7 +54,7 @@ public class Fase extends JPanel implements ActionListener {
 	        Random r = new  Random();
 	        for(int i = 0; i < 10; i++){
 
-	            int x = r.nextInt((ContainerDeJanelas.LARGURA_TELA - 40));
+	            int x = r.nextInt((ContainerDeJanelas.LARGURA_TELA - 50));
 	            int y = 0;
 
 	            if(x >= 0){
