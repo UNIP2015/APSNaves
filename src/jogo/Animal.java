@@ -1,15 +1,9 @@
 package jogo;
 
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.util.Random;
-
 import javax.swing.ImageIcon;
 
-public class Inimigo  extends ObjetoCity{
-	
-	
-	public Inimigo(int x, int y, int i){
+public class Animal extends ObjetoCity{
+	public Animal(int x, int y, int i){
 		this.x = x;
 		this.y = y;
 		this.xOrigin = x;
@@ -17,13 +11,13 @@ public class Inimigo  extends ObjetoCity{
 		ImageIcon reference;
 		
 		if(i % 3 == 0){
-			reference = new ImageIcon("res/lixo3.png");			
+			reference = new ImageIcon("res/animal1.png");			
 		}
 		else if(i % 5 == 0){
-			reference = new ImageIcon("res/lixo1.png");
+			reference = new ImageIcon("res/animal2.png");
 		}
 		else {
-			reference = new ImageIcon("res/lixo2.png");
+			reference = new ImageIcon("res/animal3.png");
 		}
 		
 		imagem = reference.getImage();
@@ -38,8 +32,4 @@ public class Inimigo  extends ObjetoCity{
 			this.x= this.xOrigin;
 		}
 	}
-	
-	
-
-	
 }

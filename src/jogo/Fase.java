@@ -24,9 +24,11 @@ public class Fase extends JPanel implements ActionListener {
 	private Timer timer;
 	private int enemy = 10;
 	
+	private int points = 0;
+	
 	private boolean emJogo;
 
-	private List<Inimigo> inimigos;
+	private List<ObjetoCity> objetos;
 
 	public Fase() {
 		setFocusable(true);
@@ -39,7 +41,10 @@ public class Fase extends JPanel implements ActionListener {
 
 		emJogo = true;
 
+		objetos = new ArrayList<ObjetoCity>();
 		inicializaInimigos();
+		inicializaAnimais();
+		
 
 		timer = new Timer(5, this);
 		timer.start();
@@ -47,7 +52,7 @@ public class Fase extends JPanel implements ActionListener {
 
 	public void inicializaInimigos() {
 		
-		 inimigos = new ArrayList<Inimigo>();
+		
 
 	        Random r = new  Random();
 	        for(int i = 0; i < enemy; i++){
@@ -68,7 +73,36 @@ public class Fase extends JPanel implements ActionListener {
 	                y = (ContainerDeJanelas.ALTURA_TELA + r.nextInt((x * -1))) * -1;
 	            }
 
-	            inimigos.add(new Inimigo(x, y, i));
+	            objetos.add(new Inimigo(x, y, i));
+
+	            if(i % 9 == 0){
+
+	            }
+	        }
+	}
+	
+	public void inicializaAnimais() {
+	
+
+	        Random r = new  Random();
+	        for(int i = 0; i < 10; i++){
+
+	            int x = r.nextInt((ContainerDeJanelas.LARGURA_TELA - 50));
+	            int y = 0;
+
+	            if(x >= 0){
+	                y = (ContainerDeJanelas.ALTURA_TELA + r.nextInt(x)) * -1;
+	            }
+	            else
+	            {
+	                y = (ContainerDeJanelas.ALTURA_TELA + r.nextInt((x * -1))) * -1;
+	            }
+
+	            objetos.add(new Animal(x, y, i));
+
+	            if(i % 9 == 0){
+
+	            }
 	        }
 	      
 	}
@@ -85,20 +119,22 @@ public class Fase extends JPanel implements ActionListener {
 				Missil m = (Missil) misseis.get(i);
 				graficos.drawImage(m.getImagem(), m.getX(), m.getY(), this);
 			}
-			for (int i = 0; i < inimigos.size(); i++) {
-				Inimigo in = inimigos.get(i);
+			for (int i = 0; i < objetos.size(); i++) {
+				ObjetoCity in =  objetos.get(i);
 				graficos.drawImage(in.getImagem(), in.getX(), in.getY(), this);
 			}
 
 			graficos.setColor(Color.BLACK);
+			
+			graficos.drawString("Pontos: " + points, (ContainerDeJanelas.LARGURA_TELA / 2), 15);
 
 		}
 		g.dispose();
 	}
-
+	
 	public void actionPerformed(ActionEvent arg0) {
 
-		if (inimigos.size() == 0) {
+		if (objetos.size() == 0) {
 			emJogo = false;
 		}
 
@@ -115,14 +151,14 @@ public class Fase extends JPanel implements ActionListener {
 			}
 		}
 
-		for (int i = 0; i < inimigos.size(); i++) {
+		for (int i = 0; i < objetos.size(); i++) {
 
-			Inimigo in = inimigos.get(i);
+			ObjetoCity in = objetos.get(i);
 
 			if (in.isVisible()) {
 				in.move();
 			} else {
-				inimigos.remove(i);
+				objetos.remove(i);
 			}
 		}
 		nave.move();
@@ -136,18 +172,28 @@ public class Fase extends JPanel implements ActionListener {
 		Rectangle formaInimigo;
 		Rectangle formaMissel;
 
-		for (int i = 0; i < inimigos.size(); i++) {
+		for (int i = 0; i < objetos.size(); i++) {
 
-			Inimigo tempInimigo = inimigos.get(i);
+			ObjetoCity tempInimigo = objetos.get(i);
 			formaInimigo = tempInimigo.getBounds();
 
 			if (formaNave.intersects(formaInimigo)) {
-
-				nave.setVisivel(false);
-				tempInimigo.setVisible(false);
 				
+				
+				if( tempInimigo instanceof Animal){
+					points += 5;
+					
+				}else {
+					nave.setVisivel(false);
+					emJogo = false;
+					objetos = new ArrayList<ObjetoCity>();
+					points = 0;
+					new GameOver(this);
+				}
+				
+				tempInimigo.setVisible(false);
 
-				emJogo = false;
+				
 			}
 		}
 
@@ -158,19 +204,31 @@ public class Fase extends JPanel implements ActionListener {
 			Missil tempMissel = misseis.get(i);
 			formaMissel = tempMissel.getBounds();
 
-			for (int j = 0; j < inimigos.size(); j++) {
+			for (int j = 0; j < objetos.size(); j++) {
 
-				Inimigo tempInimigo = inimigos.get(j);
+				ObjetoCity tempInimigo = objetos.get(j);
 				formaInimigo = tempInimigo.getBounds();
 
 				if (formaMissel.intersects(formaInimigo)) {
+					
+					if( !(tempInimigo instanceof Animal) ){
+						tempInimigo.setY((100 + ContainerDeJanelas.ALTURA_TELA * -1));
+						tempMissel.setVisible(false);
+						points++;
+					}
 
-					tempInimigo.setY((100 + ContainerDeJanelas.ALTURA_TELA * -1));
-					tempMissel.setVisible(false);
+					
 
 				}
 			}
 		}
+	}
+	
+	public void playAgain(){
+		emJogo = true;
+		nave = new Nave();
+		inicializaInimigos();
+		
 	}
 
 	private class TecladoAdapter extends KeyAdapter {
