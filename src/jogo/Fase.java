@@ -17,12 +17,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-@SuppressWarnings("serial")
 public class Fase extends JPanel implements ActionListener {
 
 	private Image fundo;
 	private Nave nave;
 	private Timer timer;
+	private int enemy = 10;
 	
 	private boolean emJogo;
 
@@ -50,9 +50,14 @@ public class Fase extends JPanel implements ActionListener {
 		 inimigos = new ArrayList<Inimigo>();
 
 	        Random r = new  Random();
-	        for(int i = 0; i < 10; i++){
+	        for(int i = 0; i < enemy; i++){
 
-	            int x = r.nextInt((ContainerDeJanelas.LARGURA_TELA - 50));
+	            int x = r.nextInt((ContainerDeJanelas.LARGURA_TELA - 200));
+	            
+	            if(x < 100){
+	            	x = 100;
+	            }
+	            
 	            int y = 0;
 
 	            if(x >= 0){
@@ -64,11 +69,8 @@ public class Fase extends JPanel implements ActionListener {
 	            }
 
 	            inimigos.add(new Inimigo(x, y, i));
-
-	            if(i % 9 == 0){
-
-	            }
 	        }
+	      
 	}
 
 	public void paint(Graphics g) {
@@ -94,7 +96,6 @@ public class Fase extends JPanel implements ActionListener {
 		g.dispose();
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
 		if (inimigos.size() == 0) {

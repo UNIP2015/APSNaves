@@ -1,7 +1,6 @@
 package jogo;
 import javax.swing.JFrame;
 
-@SuppressWarnings("serial")
 public class ContainerDeJanelas extends JFrame{
 	public static int LARGURA_TELA = 800;
 	public static int ALTURA_TELA = 800;

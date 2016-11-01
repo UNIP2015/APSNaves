@@ -14,7 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
 public class ContainerMenu extends FrameGeneric {
 	private JButton btSobre;
 	private JButton btSair;
@@ -27,7 +26,7 @@ public class ContainerMenu extends FrameGeneric {
 		
 		Dimension dimension = new Dimension(ContainerDeJanelas.LARGURA_TELA,ContainerDeJanelas.ALTURA_TELA + 100);
 		
-		setTitle("Meu Primeiro Jogo");
+		setTitle("APS");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(dimension);
 		setResizable(false);
@@ -138,10 +137,9 @@ public class ContainerMenu extends FrameGeneric {
 	}
 
 	private void initEvents(){
-		FrameGeneric self = this;
+		final FrameGeneric self = this;
 		btPlay.addActionListener(new ActionListener() {
 			
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				try{
 					self.dispose();

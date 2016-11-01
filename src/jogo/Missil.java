@@ -30,7 +30,7 @@ public class Missil {
 	
 	public void move(){
 		this.y -= VELOCIDADE;
-		if(y > ALTURA_TELA){
+		if(y < -10){
 			isVisible = false;
 		}
 	}
