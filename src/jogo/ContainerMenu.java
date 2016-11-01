@@ -138,10 +138,10 @@ public class ContainerMenu extends FrameGeneric {
 	}
 
 	private void initEvents(){
-		FrameGeneric self = this;
+		final FrameGeneric self = this;
 		btPlay.addActionListener(new ActionListener() {
 			
-			@Override
+			
 			public void actionPerformed(ActionEvent e) {
 				try{
 					self.dispose();
@@ -156,6 +156,7 @@ public class ContainerMenu extends FrameGeneric {
 	}
 	public static void main(String[] args) {
 		new ContainerMenu();
+		
 	}
 	
 }
