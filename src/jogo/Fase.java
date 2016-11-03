@@ -29,8 +29,10 @@ public class Fase extends JPanel implements ActionListener {
 	private boolean emJogo;
 
 	private List<ObjetoCity> objetos;
+	private FrameGeneric parent;
 
-	public Fase() {
+	public Fase(FrameGeneric parent) {
+		this.parent = parent;
 		setFocusable(true);
 		setDoubleBuffered(true);
 		addKeyListener(new TecladoAdapter());
@@ -188,7 +190,7 @@ public class Fase extends JPanel implements ActionListener {
 					emJogo = false;
 					objetos = new ArrayList<ObjetoCity>();
 					points = 0;
-					new GameOver(this);
+					new GameOver(this, this.parent);
 				}
 				
 				tempInimigo.setVisible(false);

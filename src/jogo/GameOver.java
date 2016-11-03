@@ -17,9 +17,11 @@ public class GameOver extends FrameGeneric {
 	private JButton btSair;
 	
 	private Fase fase;
+	private FrameGeneric parent;
 
-	public GameOver(Fase pn) {
+	public GameOver(Fase pn, FrameGeneric parent) {
 		this.fase = pn;
+		this.parent = parent;
 		
 		Dimension dimension = new Dimension(ContainerDeJanelas.LARGURA_TELA /2,ContainerDeJanelas.ALTURA_TELA / 2);
 		setTitle("Game Over");
@@ -40,7 +42,7 @@ public class GameOver extends FrameGeneric {
 		panel.add(lbMessage);		
 		
 		
-		btAgain = new JButton("JOGAR E SE FODER DE NOVO");
+		btAgain = new JButton("VOLTAR PARA O MENU");
 		btAgain.setForeground(Color.WHITE);
 		btAgain.setBackground(Color.black);
 		btAgain.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -50,7 +52,7 @@ public class GameOver extends FrameGeneric {
 		
 		panel.add(btAgain);	
 		
-		btSair = new JButton("NÃO SOU DA LESTE, CHEGUEI MAS TO SAINDO FORA");
+		btSair = new JButton("SAIR");
 		btSair.setForeground(Color.WHITE);
 		btSair.setBackground(Color.black);
 		btSair.setBorder(BorderFactory.createCompoundBorder(
@@ -82,7 +84,9 @@ public class GameOver extends FrameGeneric {
 
 			public void actionPerformed(ActionEvent arg0) {
 				self.dispose();
-				fase.playAgain();
+				parent.dispose();
+				new ContainerMenu();
+//				fase.playAgain();
 				
 			}
 		});
