@@ -54,8 +54,6 @@ public class Fase extends JPanel implements ActionListener {
 
 	public void inicializaInimigos() {
 		
-		
-
 	        Random r = new  Random();
 	        for(int i = 0; i < enemy; i++){
 
