@@ -30,6 +30,7 @@ public class ContainerMenu extends FrameGeneric {
 	private JLabel lbTitle;
 	private JPanel panel;
 	private Image fundo;
+	private Color buttoncolor;
 	
 	public ContainerMenu() {
 		
@@ -41,6 +42,7 @@ public class ContainerMenu extends FrameGeneric {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setLayout(null);
+		buttoncolor = new Color(0f,0f,0f,.0f );
 		
 		ImageIcon referencia = new ImageIcon("res/fundo.png");
 		fundo = referencia.getImage();
@@ -53,10 +55,6 @@ public class ContainerMenu extends FrameGeneric {
 
 		lbTitle = new JLabel("NaveCity");
 		
-		
-		
-
-		
 		//Botoes
 		panelButtons = new JPanel();
 		panelButtons.setBackground(null);
@@ -67,9 +65,9 @@ public class ContainerMenu extends FrameGeneric {
 		Font f = new Font("Arial", Font.BOLD, 18);
 		Font fTitle = new Font("Arial", Font.BOLD, 32);
 		lbTitle.setFont(fTitle);
-		lbTitle.setForeground(Color.WHITE);
+		lbTitle.setForeground(Color.YELLOW);
 		lbTitle.setSize(200, 200);
-		lbTitle.setLocation(ContainerDeJanelas.LARGURA_TELA / 2 - 50, 40);
+		lbTitle.setLocation(ContainerDeJanelas.LARGURA_TELA / 2 - 75, 40);
 		panelButtons.add(lbTitle);
 		
 		panelButtons.setLocation(0, 0);
@@ -80,11 +78,10 @@ public class ContainerMenu extends FrameGeneric {
 		
 		//Botoes Init Jogo
 		btPlay = new JButton("Iniciar Jogo");
-		btPlay.setBackground(Color.BLACK);
-		BorderFactory.createLineBorder(Color.WHITE, 1);
+		btPlay.setBackground(buttoncolor);
 		btPlay.setBorder(BorderFactory.createCompoundBorder(
 	               BorderFactory.createLineBorder(Color.WHITE, 3),
-	               BorderFactory.createLineBorder(Color.BLACK, 20)));
+	               BorderFactory.createLineBorder(buttoncolor, 20)));
 		
 		btPlay.setSize(sizeBt);
 		btPlay.setFont(f);
@@ -97,11 +94,11 @@ public class ContainerMenu extends FrameGeneric {
 		
 		//Botao instrucao		
 		btInstrucoes = new JButton("Como Jogar");
-		btInstrucoes.setBackground(Color.BLACK);
-		
+		btInstrucoes.setBackground(buttoncolor);
 		btInstrucoes.setBorder(BorderFactory.createCompoundBorder(
 	               BorderFactory.createLineBorder(Color.WHITE, 3),
-	               BorderFactory.createLineBorder(Color.BLACK, 20)));
+	               BorderFactory.createLineBorder(buttoncolor, 20)));
+		
 		btInstrucoes.setSize(sizeBt);
 		btInstrucoes.setFont(f);
 		btInstrucoes.setForeground(Color.WHITE);
@@ -113,10 +110,10 @@ public class ContainerMenu extends FrameGeneric {
 		
 		//Botao Sobre
 		btSobre = new JButton("Sobre");
-		btSobre.setBackground(Color.BLACK);
+		btSobre.setBackground(buttoncolor);
 		btSobre.setBorder(BorderFactory.createCompoundBorder(
 	               BorderFactory.createLineBorder(Color.WHITE, 3),
-	               BorderFactory.createLineBorder(Color.BLACK, 20)));
+	               BorderFactory.createLineBorder(buttoncolor, 20)));
 		
 		btSobre.setSize(sizeBt);
 		btSobre.setFont(f);
@@ -129,10 +126,10 @@ public class ContainerMenu extends FrameGeneric {
 		
 		//Botao Sair
 		btSair = new JButton("Sair");
-		btSair.setBackground(Color.BLACK);
+		btSair.setBackground(buttoncolor);
 		btSair.setBorder(BorderFactory.createCompoundBorder(
 	               BorderFactory.createLineBorder(Color.WHITE, 3),
-	               BorderFactory.createLineBorder(Color.BLACK, 20)));
+	               BorderFactory.createLineBorder(buttoncolor, 20)));
 		
 		btSair.setSize(sizeBt);
 		btSair.setFont(f);
@@ -150,13 +147,6 @@ public class ContainerMenu extends FrameGeneric {
 		panelButtons.add(lbPic);
 		
 		panel.add(panelButtons);
-		
-		
-		
-		
-		
-		
-		
 		
 		add(panel);
 		
