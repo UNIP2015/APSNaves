@@ -168,6 +168,22 @@ public class ContainerMenu extends FrameGeneric {
 			}
 		});
 		
+		btInstrucoes.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				new ContainerInstrucao();
+				
+			}
+		});
+		
+		btSobre.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				new ContainerSobre();
+				
+			}
+		});
+		
 		btSair.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				System.exit(0);

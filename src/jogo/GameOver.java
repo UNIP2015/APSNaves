@@ -20,6 +20,7 @@ public class GameOver extends FrameGeneric {
 	private FrameGeneric parent;
 
 	public GameOver(Fase pn, FrameGeneric parent) {
+	
 		this.fase = pn;
 		this.parent = parent;
 		
