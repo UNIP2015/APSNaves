@@ -65,7 +65,7 @@ public class ContainerMenu extends FrameGeneric {
 		Font f = new Font("Arial", Font.BOLD, 18);
 		Font fTitle = new Font("Arial", Font.BOLD, 32);
 		lbTitle.setFont(fTitle);
-		lbTitle.setForeground(Color.YELLOW);
+		lbTitle.setForeground(Color.WHITE);
 		lbTitle.setSize(200, 200);
 		lbTitle.setLocation(ContainerDeJanelas.LARGURA_TELA / 2 - 75, 40);
 		panelButtons.add(lbTitle);

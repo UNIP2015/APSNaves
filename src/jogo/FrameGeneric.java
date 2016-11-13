@@ -29,11 +29,10 @@ public class FrameGeneric extends JFrame{
 		JPanel pn = new JPanel();
 		pn.setLocation(0,0);
 		pn.setSize(dimension);
-		pn.setBackground(Color.black);
+		pn.setBackground(Color.white);
 		
 		pn.setLayout(null);
 		setContentPane(pn);
-//		getContentPane().add(lbPic);
 		
 	}
 	

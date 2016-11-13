@@ -26,24 +26,23 @@ public class GameOver extends FrameGeneric {
 		
 		Dimension dimension = new Dimension(ContainerDeJanelas.LARGURA_TELA /2,ContainerDeJanelas.ALTURA_TELA / 2);
 		setTitle("Game Over");
-		setSize(dimension);
+		setSize(200, 180);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
-		panel.setSize(dimension);
+		panel.setBackground(Color.WHITE);
+		panel.setSize(200,200);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
-		JLabel lbMessage = new JLabel("GAME OVER OTÁRIO");
-		lbMessage.setForeground(Color.WHITE);
+		JLabel lbMessage = new JLabel("GAME OVER");
+		lbMessage.setForeground(Color.BLACK);
 		lbMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		panel.add(lbMessage);		
 		
-		
-		btAgain = new JButton("VOLTAR PARA O MENU");
+		btAgain = new JButton("MENU PRINCIPAL");
 		btAgain.setForeground(Color.WHITE);
 		btAgain.setBackground(Color.black);
 		btAgain.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -46,8 +46,8 @@ public class Nave {
 		if(y < 1){
 			y = 1;
 		}
-		if(y > 700){
-			y = 700;
+		if(y > 670){
+			y = 670;
 		}
 	}
 	
